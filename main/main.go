@@ -22,8 +22,6 @@ func main() {
 	fmt.Println("Max calories is: ", maxCalories)
 	max3Calories := findMax3Calories()
 	fmt.Println("Max 3 calories is: ", max3Calories)
-
-	//printElvesSortByCalories()
 }
 
 // Func to read file content
