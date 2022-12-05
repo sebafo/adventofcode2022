@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	fmt.Println("Hello, Advent Of Code 2022! DAY 3")
+	fmt.Println("Hello, Advent Of Code 2022! DAY 4")
 	playTheGamePart1()
 	playTheGamePart2()
 }
