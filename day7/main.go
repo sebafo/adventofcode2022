@@ -32,11 +32,10 @@ func createDirecturyStructure(input string) Directory {
 	root := Directory{Name: "root"}
 	currentDir := &root
 	for _, input := range inputs {
-		if input == "$ cd /" {
+		switch {
+		case input == "$ cd /":
 			currentDir = &root
-			continue
-		}
-		if strings.HasPrefix(input, "$ ") {
+		case strings.HasPrefix(input, "$ "):
 			// command
 			if strings.HasPrefix(input, "$ cd") {
 				// switch directory
@@ -48,14 +47,14 @@ func createDirecturyStructure(input string) Directory {
 					currentDir = currentDir.getSubDirectoryByName(strings.TrimPrefix(input, "$ cd "))
 				}
 			}
-			continue
-		}
-		if strings.HasPrefix(input, "dir") {
+		case strings.HasPrefix(input, "dir"):
 			// directory
-			dir := Directory{Name: strings.TrimPrefix(input, "dir "),
-				Parent: currentDir}
+			dir := Directory{
+				Name:   strings.TrimPrefix(input, "dir "),
+				Parent: currentDir,
+			}
 			currentDir.addSubDirectory(&dir)
-		} else {
+		default:
 			// file
 			size, err := strconv.Atoi(strings.Split(input, " ")[0])
 			if err != nil {
@@ -64,7 +63,8 @@ func createDirecturyStructure(input string) Directory {
 			file := File{
 				Directory: currentDir,
 				Name:      strings.Split(input, " ")[1],
-				Size:      size}
+				Size:      size,
+			}
 			currentDir.addFile(&file)
 		}
 	}
