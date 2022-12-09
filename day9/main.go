@@ -90,7 +90,6 @@ func moveTail(positionHead, positionTail *Position) {
 	if math.Abs(float64(deltaPosition.X)) > 1 || math.Abs(float64(deltaPosition.Y)) > 1 {
 		positionTail.X += deltaToPos(deltaPosition.X)
 		positionTail.Y += deltaToPos(deltaPosition.Y)
-		return
 	}
 }
 
