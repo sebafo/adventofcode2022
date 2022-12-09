@@ -45,7 +45,6 @@ func parseMoves(input string) []Move {
 func moveRopeExtended(moves []Move, ropeLenght int) int {
 	positionsRope := make([]Position, ropeLenght)
 	visited := make(map[Position]bool)
-	sum := 0
 
 	for _, move := range moves {
 		for i := 0; i < move.Steps; i++ {
@@ -59,13 +58,7 @@ func moveRopeExtended(moves []Move, ropeLenght int) int {
 		}
 	}
 
-	for _, visit := range visited {
-		if visit {
-			sum++
-		}
-	}
-
-	return sum
+	return len(visited)
 }
 
 func moveHead(position *Position, move Move) {
