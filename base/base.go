@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"log"
 	"os"
+	"strconv"
 )
 
 type fn func(string) string
@@ -58,4 +59,13 @@ func ReadFileToStringArray(path string) []string {
 	}
 
 	return lines
+}
+
+func ParseInt(s string) int {
+	i, err := strconv.Atoi(s)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	return i
 }
